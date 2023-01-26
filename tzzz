@@ -88,3 +88,7 @@ VALUES (3, 2);
 
 INSERT INTO public.carts (order_id, item_id)
 VALUES (3, 3);
+
+DELETE FROM carts WHERE carts.order_id IN (SELECT id FROM orders WHERE user_id = 1);
+DELETE FROM orders WHERE user_id =1;
+DELETE FROM users WHERE id = 1;
