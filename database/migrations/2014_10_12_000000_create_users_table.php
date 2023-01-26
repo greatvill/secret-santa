@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50)->unique();
-            $table->string('firstname', 50)->unique();
-            $table->string('lastname', 50)->unique();
-            $table->integer('secret_santa_id')->unsigned()->nullable();
+            $table->string('firstname', 50);
+            $table->string('lastname', 50);
+            $table->integer('secret_santa_id')->unsigned()->nullable()->unique();
+
+            $table->foreign('secret_santa_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
